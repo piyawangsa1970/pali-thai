@@ -1,0 +1,46 @@
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <a class="w3-bar-item w3-button w3-hide-large w3-large w3-border-bottom" href="javascript:void(0)" onclick="w3_close()"><%=nav_title%><span class="w3-right">&#10005;</span></a>
+  
+  <!--เริ่ม side-bar  --> 
+  <% acc.forEach(function(item){ %>
+    <% if (item.stus) { %>
+      <a 
+        class="sidebar-list hover-light-grey acc acc-img-down " 
+        onclick="toggleAcc(event)"><%= item.caption %></a>
+      <div 
+        class="w3-hide">
+        <% for (let i=0; i<item.len; i++) { %>
+          <a class="acc-list hover-light-grey" href="<%= item.hrefs[i]%>"><%= item.sub[i] %></a>
+        <% } %>
+      </div>
+      <% } else { %>
+        <a class="sidebar-list hover-light-grey" 
+          href="<%=item.href%>">
+          <%= item.caption %>
+        </a>
+      <% } %>  
+    <% }) %>
+  <!-- จบ side-bar  -->
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="topbar" class="w3-top w3-theme">
+    <div id="hamburger" class="w3-hide-large" onclick="w3_open()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div>
+      <!-- <ul class="breadcrumb"> -->
+        <% guides.forEach(function(item){%>
+          <a class="breadcrumbs" href="<%=item[1]%>"><%=item[0]%>&nbsp;</a>
+        <% }) %>
+      <!-- </ul> -->
+      
+    </div>
+</div>
+

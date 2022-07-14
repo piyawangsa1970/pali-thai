@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../../partials/header.ejs",{title:"อักขระและสนธิ"})%>
+</head>
+
+<body>
+  <!-- side nav -->
+
+  <%- include ("../../partials/nav.ejs",
+    {
+      nav_title:"อักขระและสนธิ",
+      guides:[["บาลีไทย","/"],["ไวยากรณ์ › อักขระและสนธิ","#"]],
+      acc:[
+        {stus:false,caption:"หน้าแรก",href:"/"},
+        {stus:true,caption:"อักขระ",len:7,
+          sub:["อักขระ","สระ","พยัญชนะ","นิคคหิต","การต่ออักขระ","การรวมอักขระ","การแยกอักขระ"],
+          hrefs:["#","#","#","#","#","#","#"]
+        },
+        {stus:true,caption:"สนธิ",len:3,
+          sub:["รัสโส","ทีโฆ","โลโป"],
+          hrefs:["#","#","#"]
+        }
+      ]
+    }) 
+  %>
+    <br><br><br>
+    <div class="row-content">
+      <div class="container">
+        <h5>อักขระ</h5>
+        <div class="w3-border pb-16">
+          <div class="w3-bar w3-light-grey">
+            <a class="bar-item button tabaugkara w3-teal" onclick="openTab(event,'augkara-3-0')">ทั้งหมด</a>
+            <a class="bar-item button tabaugkara" onclick="openTab(event,'augkara-3-1')">สระ</a>
+            <a class="bar-item button tabaugkara" onclick="openTab(event,'augkara-3-2')">พยัญชนะ</a>
+            <a class="bar-item button tabaugkara" onclick="openTab(event,'augkara-3-3')">นิคคหิต</a>
+          </div>
+
+          <!-- ตารางอักขระทั้งหมด -->
+          <div class="container augkara">
+            <h6>อักขระทั้งหมด มี ๔๑ ตัว ดังต่อไปนี้</h6>
+            <div class="w3-responsive">
+              <%- include ("../../partials/table.ejs",
+                {
+                  tables:[
+                    ["กฺ","ขฺ","คฺ","ฆฺ","งฺ"],
+                    ["จฺ","ฉฺ","ชฺ","ฌฺ","ญฺ"],
+                    ["ฏฺ","ฐฺ","ฑฺ","ฒฺ","ณฺ"],
+                    ["ตฺ","ถฺ","ธฺ","ทฺ","นฺ"],
+                    ["ปฺ","ผฺ","พฺ","ภฺ","มฺ"],
+                    ["ยฺ","รฺ","ลฺ","วฺ","สฺ","หฺ","ฬฺ"],
+                    ["  ํ","","","","","",""]
+                  ]
+                })
+              %>
+            </div>
+          </div>
+          
+          <!-- ตารางสระ -->
+          <div class="container augkara" style="display: none">
+            <h6>สระ มี ๘ ตัว ดังต่อไปนี้</h6>
+            <div class="w3-responsive">
+              <table class="w3-table">
+                <%- include ("../../partials/table.ejs",
+                {
+                  tables:[
+                    ["อ","อา","อิ","อี","อุ","อู","เอ","โอ"]
+                  ]
+                })
+              %>
+              </table>
+            </div>
+          </div>
+    
+          <!-- ตารางพยัญชนะ -->
+          <div class="container augkara" style="display: none">
+            <h6>พยัญชนะ มี ๓๒ ตัว ดังต่อไปนี้</h6>
+            <div class="w3-responsive">
+              <%- include ("../../partials/table.ejs",
+                {
+                  tables:[
+                    ["กฺ","ขฺ","คฺ","ฆฺ","งฺ"],
+                    ["จฺ","ฉฺ","ชฺ","ฌฺ","ญฺ"],
+                    ["ฏฺ","ฐฺ","ฑฺ","ฒฺ","ณฺ"],
+                    ["ตฺ","ถฺ","ธฺ","ทฺ","นฺ"],
+                    ["ปฺ","ผฺ","พฺ","ภฺ","มฺ"],
+                    ["ยฺ","รฺ","ลฺ","วฺ","สฺ","หฺ","ฬฺ"]
+                  ]
+                })
+              %>
+            </div>
+          </div>
+    
+          <!-- ตารางนิคคหิต -->
+          <div class="container  augkara" style="display: none">
+            <h6>นิคคหิต มี ๑ ตัว ดังต่อไปนี้</h6>
+            <h6>&nbsp;&nbsp;ํ</h6>
+            <p>
+              <span class="w3-text-red">หมายเหตุ</span>&nbsp;&nbsp;นิคคหิต
+              ปกติจะไม่อยู่ตามลำพัง แต่ถ้าว่ามีความจำเป็นเกิดขึ้น ต่อไปภายหลัง
+              จะเขียนเป็น อํ ขอจงรู้เถิดว่า ตัว อ นั้น
+              ผู้จัดทำได้เขียนหลอกไว้ นั่นเอง
+            </p>
+          </div>
+
+        </div>  <!-- end card -->
+      </div>
+    </div> <!-- end left col -->
+    
+
+  <div class="row-content">
+    <div class="container">
+      <h5>สระ</h5>
+      <div class="w3-border pb-16">
+        <div class="w3-bar w3-light-grey">
+          <a class="bar-item button tabsara w3-teal" onclick="openTab(event,'sara-3-0')">ทั้งหมด</a>
+          <a class="bar-item button tabsara " onclick="openTab(event,'sara-3-1')">รัสโส/ทีโฆ</a>
+          <a class="bar-item button tabsara " onclick="openTab(event,'sara-3-2')">ลหุ/ครุ</a>
+          <a class="bar-item button tabsara " onclick="openTab(event,'sara-3-3')">วัณโณ</a>
+        </div>
+        
+  
+        <!-- ตารางสระทั้งหมด -->
+        <div class="container sara">
+          <h6>สระทั้งหมด มี ๘ ตัว ดังต่อไปนี้</h6>
+          <div class="w3-responsive">
+            <table class="w3-table">
+              <%- include ("../../partials/table.ejs",
+                {
+                  tables:[
+                    ["อ","อา","อิ","อี","อุ","อู","เอ","โอ"]
+                  ]
+                })
+                %>
+            </table>
+          </div>
+        </div>
+  
+        <div class="container sara" style="display: none;">
+          <p>จัดแบ่งตามความยาวเสียง</p>
+          <p>อ อิ อุ ที่มีพยัญชนะสังโยคอยู่เบื้องหลังหรือไม่มีก็ตาม ที่มีนิคคหิตอยู่เบื้องหลังหรือไม่มีก็ตาม จัดเป็นสระเสียงสั้น เรียกว่า รัสโส</p>
+          <p>เอ โอ ที่พยัญชนะสังโยคอยู่เบื้องหลัง จัดเป็นสระเสียงสั้น เรียกว่า รัสโส</p>
+          <p>อา อี อู เอ โอ ที่ไม่มีพยัญชนะสังโยคอยู่เบื้องหลัง จัดเป็นสระเสียงยาว เรียก ทีโฆ </p>
+          <p><span class="w3-text-red">หมายเหตุ</span> เสียงสั้น มีความยาวเสียงเท่ากับ คนปกติใช้เวลากระพริบตา 1 ครั้ง เสียงยาว มีความยาวเป็น 2 เท่า ของเสียงสั้น</p>
+        </div>
+  
+        <div class="container sara" style="display: none;">
+          <p>จัดแบ่งตามน้ำหนักของเสียง</p>
+          <p>อ อิ อุ ที่ไม่มีพยัญชนะสังโยคหรือไม่มีนิคคหิตอยู่เบื้องหลัง จัดเป็นสระเสียงเบา เรียกว่า ลหุ</p>
+          <p>อ อิ อุ ที่มีพยัญชนะสังโยคหรือมีนิคคหิตอยู่เบื้องหลัง จัดเป็นสระเสียงหนัก เรียกว่า  ครุ</p>
+          <p>อา อี อู เอ โอ ที่มีพยัญชนะสังโยคอยู่เบื้องหลังหรือไม่มีก็ตาม จัดเป็นสระเสียงหนัก เรียก ครุ </p>
+        </div>
+  
+        <div class="container sara" style="display: none;">
+          <p>จัดแบ่งตามฐานที่เกิดเสียง</p>
+          <p>อ อา เป็นเสียงเกิดขึ้นที่คอ  เรียกว่า อ วัณโณ</p>
+          <p>อิ อี เป็นเสียงเกิดขึ้นที่เพดาน เรียกว่า อิ วัณโณ</p>
+          <p>อุ อู เป็นเสียงเกิดขึ้นที่ริมฝีปาก เรียกว่า อุ วัณโณ</p>
+          <p>เอ เป็นเสียงผสมระหว่าง อ และ อิ เกิดขี้นที่คอและที่เพดาน </p>
+          <p>โอ เป็นเสียงผสมระหว่าง อ และ อุ เกิดขึ้นที่คอและที่ริมฝีปาก </p>
+          <p><span class="w3-text-red">หมายเหตุ</span> เอ โอ ไม่จัดเข้าวัณโณ เป็นเสียงผสม เรียกว่า สังยุตโต</p>
+  
+        </div>
+  
+
+      </div>  <!-- end card -->
+    </div>
+  </div>
+
+  <div class="row-content">
+    <h5 class="container">พยัญชนะ</h5>
+    <div class="container">
+      <div class="w3-border pb-16">
+          <!-- tab พยํญชนะ -->
+        <div class="w3-bar w3-light-grey">
+          <a class="bar-item button tabpayan w3-teal" onclick="openTab(event,'payan-2-0')">ทั้งหมด</a>
+          <a class="bar-item button tabpayan" onclick="openTab(event,'payan-2-1')">วัคโค</a>
+          <a class="bar-item button tabpayan" onclick="openTab(event,'payan-2-2')">สัญโญโค</a>
+        </div>
+        <!-- tab แสดงผล -->
+        <div class="container payan">
+          <h6>พยัญชนะทั้งหมด มี ๓๒ ตัว ดังต่อไปนี้</h6>
+          <div class="w3-responsive">
+            <%- include ("../../partials/table.ejs",
+              {
+                tables:[
+                  ["กฺ","ขฺ","คฺ","ฆฺ","งฺ"],
+                  ["จฺ","ฉฺ","ชฺ","ฌฺ","ญฺ"],
+                  ["ฏฺ","ฐฺ","ฑฺ","ฒฺ","ณฺ"],
+                  ["ตฺ","ถฺ","ธฺ","ทฺ","นฺ"],
+                  ["ปฺ","ผฺ","พฺ","ภฺ","มฺ"],
+                  ["ยฺ","รฺ","ลฺ","วฺ","สฺ","หฺ","ฬฺ"]
+                ]
+              })
+            %>
+          </div>
+        </div>
+  
+        <div class="container payan" style="display: none;">
+          <h6>พยัญชนะวรรค</h6>
+          <p>กฺ ขฺ คฺ ฆฺ งฺ เรียกว่า  ก วัคโค</p>
+          <p>จฺ ฉฺ ชฺ ฌฺ ญฺ เรียกว่า จ วัคโค </p>
+          <p>ฏฺ ฐฺ ฑฺ ฒฺ ณฺ เรียกว่า ฏ วัคโค</p>
+          <p>ตฺ ถฺ ทฺ ธฺ นฺ เรียกว่า  ต วัคโค</p>
+          <p>ปฺ ผฺ พฺ ภฺ มฺ เรียกว่า ป วัคโค</p>
+          <p><span class="w3-text-red">หมายเหตุ </span> ยฺ รฺ ลฺ วฺ สฺ หฺ ฬฺ ไม่จัดเข้าเป็นวรรค</p>
+        </div>
+  
+        <div class="container payan" style="display: none;">
+          <h6>พยัญชนะสังโยค </h6>
+          <p>พยัญชนะเรียงติดกัน ๒ ตัว เรียกว่า พยัญชนะซ้อน<br>พยัญชนะซ้อนตัวหน้า เรียกว่า พยัญชนะสังโยค</p>  
+          <hr>
+          <p>พยัญชนะซ้อนที่ออกเสียงกล้ำ ดังตัวอย่างต่อไปนี้</p>
+          <div class="w3-responsive">
+            <table class="w3-table">
+              <%- include ("../../partials/table.ejs",
+                {
+                  tables:[
+                    ["กฺยฺ","กฺรฺ","กฺลฺ","กฺวฺ","ขฺยฺ","ขฺวฺ"],
+                    ["คฺยฺ","คฺรฺ","จฺยฺ","ญฺหฺ","ฏฺยฺ","ณฺยฺ"],
+                    ["ณฺหฺ","ตฺนฺ","ตฺยฺ","ตฺรฺ","ตฺวฺ","ถฺยฺ"],
+                    ["ทฺมฺ","ทฺรฺ","ทฺวฺ","ธฺยฺ","ธฺวฺ","นฺยฺ"],
+                    ["นฺวฺ","นฺหฺ","ปฺทฺ","ปฺยฺ","ปฺลฺ","พฺยฺ"],
+                    ["พฺรฺ","มฺยฺ","มฺหฺ","ยฺวฺ","ยฺหฺ","ลฺยฺ"],
+                    ["ลฺวฺ","ลฺหฺ","วฺยฺ","วฺหฺ","สฺตฺ","สฺนฺ"],
+                    ["สฺมฺ","สฺยฺ","สฺลฺ","สฺวฺ","หฺมฺ","หฺวฺ"],
+                    ["ฬฺหฺ"]
+                  ]
+                })
+                %>
+            </table>
+          </div>
+          <hr>
+          <p>พยัญชนะซ้อนที่ไม่ออกเสียงกล้ำ ดังตัวอย่างต่อไปนี้</p>
+          <table class="w3-table">
+            <%- include ("../../partials/table.ejs",
+              {
+                tables:[
+                  ["กฺกฺ","กฺขฺ","คฺคฺ","คฺฆฺ","งฺกฺ","งฺขฺ"],
+                  ["งฺคฺ","งฺฆฺ","งฺยฺ","งฺลฺ","จฺจฺ","จฺฉฺ"],
+                  ["ชฺชฺ","ชฺฌฺ","ญฺจฺ","ญฺฉฺ","ญฺชฺ","ญฺฌฺ"],
+                  ["ญฺญฺ","ฏฺฏฺ","ฏฺฐฺ","ฑฺฑฺ","ฑฺฒฺ","ฒฺฒฺ"],
+                  ["ณฺฏฺ","ณฺฐฺ","ณฺฑฺ","ณฺณฺ","ตฺตฺ","ตฺถฺ"],
+                  ["ทฺทฺ","ทฺธฺ","นฺตฺ","นฺถฺ","นฺทฺ","นฺธฺ"],
+                  ["นฺนฺ","ปฺปฺ","ปฺผฺ","พฺพฺ","พฺภฺ","ภฺยฺ"],
+                  ["มฺปฺ","มฺผฺ","มฺพฺ","มฺภฺ","มฺมฺ","ยฺยฺ"],
+                  ["ลฺลฺ", "สฺสฺ"]
+                ]
+              })
+              %>
+          </table>
+          
+        </div>
+  
+      </div>
+    </div>
+    
+  </div>
+     
+  <div class="row-content">
+    <h5 class="container">นิคคหิต</h5>
+    <div class="container w3-border pb-16">
+      <div class="container">
+        <br>
+        <h6>นิคคหิต มี ๑ ตัว ดังต่อไปนี้</h6>
+        <h6>&nbsp;&nbsp;ํ</h6>
+        <p>
+          <span class="w3-text-red">หมายเหตุ</span>&nbsp;&nbsp;นิคคหิต
+          ปกติจะไม่อยู่ตามลำพัง แต่ถ้าว่ามีความจำเป็นเกิดขึ้น ต่อไปภายหลัง
+          จะเขียนเป็น อํ ขอจงรู้เถิดว่า ตัว อ นั้น
+          ผู้จัดทำได้เขียนหลอกไว้ นั่นเอง
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-content">
+    <h5 class="container">การต่ออักขระ</h5>
+    <div class="container w3-border pb-16">
+      <div class="container">
+        <br><h6>การต่อ เรียกว่า สนธิ</h6>
+        <hr>
+        <div>หลักการเบื้องต้นเกี่ยวกับอักขระ</div>
+        <div class="indent-16">
+          ■ พยัญชนะเมื่อปราศจากสระแล้ว ออกเสียงเองไม่ได้ เมื่อนำมาใช้ต้องวางหน้าสระเท่านั้น(ยกเว้น งฺ ต้องวางหลังสระ) และเมื่อปรารถนาจะวางซ้อนกัน ให้วางเรียงติดกันได้ไม่เกิน ๒ ตัว<br>
+        </div>
+        <div class="indent-16">
+          ■ สระออกเสียงเองได้ด้วยตนเอง และช่วยให้ทั้งพยัญชนะทั้งนิคคหิตออกเสียงได้
+        </div>
+        <div class="indent-16">
+          ■ นิคคหิต ออกเสียงเองไม่ได้ เมื่อนำมาใช้ต้องวางหลัง อ อิ หรือ อุ เท่านั้น
+        </div>
+        <hr>
+        <div>ด้วยหลักการข้างต้น อนุมานได้ว่า</div>
+        <div class="indent-16">
+          ■ เสียงทุกเสียง ต้องมีสระ ๑ ตัว<br>
+        </div>
+        <div class="indent-16">
+          ■ เสียงทุกเสียง ประกอบด้วยอักขระอย่างน้อย ๑ ตัว และไม่เกิน ๔ ตัว<br>
+        </div>
+        <div class="indent-16">
+          ■ เมื่อสนธิเสียงเข้าด้วยกัน  เสียงหน้าจะได้จำนวนอักขระเพิ่มจากเสียงหลัง สรุปว่า เสียงหนึ่ง ๆ ใช้อักขระไม่เกิน ๕ ตัว<br>
+        </div>
+        <hr>
+        อักขระสนธิ เบื้องต้นนี้ พึงต่อให้อ่านออกเสียงได้ก่อน กำหนดให้ใช้วิธีต่อตามปกติ เรียกว่า ปกติสนธิ เป็นการนำอักขระมาต่อเรียงกันตามปกตินั่นเอง เพื่อความเข้าใจมากขี้น ก็ขอให้ทดลองทำแบบฝึกหัด โดยใช้หลักการเบื้องต้นเกี่ยวกับอักขระ ที่กล่าวมาแล้วข้างต้น 
+      </div>
+    </div>
+  </div>
+
+  <div class="row-content">
+    <h5 class="container">แบบฝึกหัด</h5>
+    <div class="container w3-border">
+      <br>
+      <div 
+        class="container">ผู้ใคร่ศึกษา พึงสนธิอักขระตามที่กำหนดให้ดังต่อไปนี้ อกฺขอรฺออํ 
+      </div>
+      <div class="w3-center">
+        <button 
+          class="w3-button w3-teal mb-16" 
+          onclick="openSanthiQuestion(event)"
+          > ทำแบบฝึกหัด 
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container">
+    <div id="modal" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <span onclick="document.getElementById('modal').style.display='none'" class="w3-display-topright w3-xlarge button">&times;</span>
+          <!-- <p id="thai_read_result" class="container mt-16">อ่านว่า&nbsp;</p> -->
+          <div id="augkara_input" class="mt-16">อักขระสนธิ:</div>
+          <div id="thai_read_result">อ่านว่า:</div>
+          <div id="thai_read_error" class="mb-16">ตรวจสอบ:</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <%- include ("../../partials/footer.ejs")%>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/header.ejs",{title:"บาลีไทย"}) %>
+</head>
+
+<body>
+  <%- include ("../partials/nav.ejs",
+    {
+      nav_title:"บาลีไทย",
+      guides:[["บาลีไทย","#"]],
+      acc:[
+        {stus:true,caption:"ไวยากรณ์",len:3,
+          sub:["อักขระและสนธิ","นาม","อาขยาต"],
+          hrefs:["/wiyagarana/santhi","#","#"]
+        }
+      ]
+    })
+  %>
+  <div class="container-main" >
+    <div class="container">
+      <h4>เรียนบาลีกันเถอะ</h4>   
+    </div>
+    
+  </div>
+</body>
+</html>
