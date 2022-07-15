@@ -58,7 +58,7 @@ const augkarani={
   },
   err_sanyoko:function(ch){ 
     // ณฺฒฺ ไม่มีใช้เลย  หฺมฺ ตอนเป็นตัวสะกดออก 2 เสียง ตอนนำออกเสียงเดียว เลยจัดกลุ่มไม่ได้ เช็คเป้นพิเศษ
-    if (!this.isOneVoiceSanyoko(ch) && !this.isYRLWH(ch) && (ch!='ณฺฒฺ') && (ch!='หฺมฺ')){  
+    if (!this.isOneVoiceSanyoko(ch) && !this.isTwoVoiceSanyoko(ch) && (ch!='ณฺฒฺ') && (ch!='หฺมฺ')){  
       return {state:true,message:this.get_possible_sanyoko(ch[0])}
     }else{
       return {state:false,message:null} 
@@ -210,7 +210,7 @@ const augkarani={
       return
     }
 
-    // แบ่งเป็นพยางค์    
+    // อ่านไทย เป็น พยางค์
     this.th_read=[]
     let pyc=[]  // payanchanani
     let payang = ''
@@ -226,14 +226,15 @@ const augkarani={
           }
         }else if(pyc.length==1){
           payang+=pyc[0][0]
-          console.log('i  payang ก่อน เจอ สระ', i, payang);
-
         }
         // --------------สระ และ ตัวสะกด ถ้ามีตัวสะกด เลื่อน i ให้ -----------------------------
         if (this.isNiccahit(w[i+1])){
+          console.log('payang:',payang)
+          console.log('w[i]',i,w[i])
+          console.log('w[i+1]',i,w[i+1])
           if (payang=='') payang='อ'
           if (w[i]=='อ') this.th_read.push(payang+this.hanargasa+'ง')
-          else this.th_read.push(payang+w[i][1]+this.hanargasa+'ง')
+          else this.th_read.push(payang+w[i][1]+'ง')
           pyc=[]
           i++
         }

@@ -55,7 +55,56 @@ function openTab(evt, tabName) {
   tablinks[selTab].className += " w3-teal"
 }
 
-function openSanthiQuestion(event){
+function include_keyboard(){
+  let char_keys=[
+    "อ","อา","อิ","อี","อุ","อู","เอ","โอ"
+    ,"กฺ","ขฺ","คฺ","ฆฺ","งฺ"
+    ,"จฺ","ฉฺ","ชฺ","ฌฺ","ญฺ"
+    ,"ฏฺ","ฐฺ","ฑฺ","ฒฺ","ณฺ"
+    ,"ตฺ","ถฺ","ทฺ","ธฺ","นฺ"
+    ,"ปฺ","ผฺ","พฺ","ภฺ","มฺ"
+    ,"ยฺ","รฺ","ลฺ","วฺ","สฺ","หฺ","ฬฺ","อํ"]
+  let keyboard=''
+  for (let i=0; i<char_keys.length; i++){
+    keyboard += `<div onClick=(insert_augkara('${char_keys[i]}'))>${char_keys[i]}</div>`
+  }
+  return keyboard
+}
+
+function openQuestion(event){
+  let parent=event.target.parentElement.parentElement
+  let question = document.getElementById ("question");
+  if (question!=null) question.remove()
+  
+  let node = document.createElement("div");
+  let textnode = document.createTextNode("question");
+  node.appendChild(textnode); 
+  node.setAttribute("id","question")
+  node.setAttribute("class","quest-santhi w3-light-grey")
+  parent.appendChild(node)
+  question = document.getElementById ("question");
+
+  question.innerHTML=`
+    <div>
+      <button style="width:30px" onclick="decrease_augkara_input()">&minus;</button> 
+      <span id="num_of_augkarani">1</span>
+      <button style="width:30px" onclick="increase_augkara_input()">&plus;</button>
+    </div>
+    <div id="getAugkarani">
+      <div class="input-augkara intro w3-border w3-border-green" onClick="setActive(0)">_</div>
+    </div>
+    <div class="keyboard w3-center">
+    ${include_keyboard()}
+    </div>
+    <div class="clearfix"></div>
+    <div class="w3-center">
+      <button class="w3-button w3-green" onClick="send_arr_of_augkara()"> ส่งคำตอบ </button>
+    </div>`
+}
+
+
+/*
+function openQuestion(event){
   let el=event.target.parentElement.parentElement
   let char_keys=["อ","อา","อิ","อี","อุ","อู","เอ","โอ"
                 ,"กฺ","ขฺ","คฺ","ฆฺ","งฺ"
@@ -75,10 +124,11 @@ function openSanthiQuestion(event){
   <div class="w3-center">
     <button 
       class="w3-button w3-teal mb-16" 
-      onclick="openSanthiQuestion(event)"
+      onclick="openQuestion(event)"
       > ทำแบบฝึกหัด 
     </button>
   </div>
+
   <div class="quest-santhi w3-light-grey">
     <div>
       <button style="width:30px" onclick="decrease_augkara_input()">&minus;</button> 
@@ -97,11 +147,11 @@ function openSanthiQuestion(event){
     </div>
   </div>`
 }
-
+*/
 function increase_augkara_input(){
   let num = document.getElementById("num_of_augkarani")
   let count = +num.innerHTML
-  if (count < 14) {
+  if (count < 12) {
     count +=1 
     num.innerText= count
     let el = document.getElementById("getAugkarani")
