@@ -1,12 +1,15 @@
 const express = require('express')
 const path = require('path')
 const wiyagarana = require('./routers/wiyagarana')
+const modals = require('./routers/modals')
 const PORT = process.env.PORT || 5000
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .use('/wiyagarana',express.static(path.join(__dirname, 'public/pages/wiyagarana')))
   .use('/wiyagarana',wiyagarana)
+  .use('/modals',express.static(path.join(__dirname, 'public/pages/modals')))
+  .use('/modals',modals)
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))

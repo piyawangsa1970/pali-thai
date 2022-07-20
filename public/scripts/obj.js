@@ -216,7 +216,6 @@ const augkarani={
     let payang = ''
     w = w.concat(["โอ","โอ"])
     for(let i=0;i<l;i++){
-      console.log('i  payang ก่อน เจอ สระ pyc.length', i, payang, pyc.length);
       if (this.isSara(w[i])){
         // ------------ พยัญชนะ -----------------------------
         payang=''
@@ -229,9 +228,6 @@ const augkarani={
         }
         // --------------สระ และ ตัวสะกด ถ้ามีตัวสะกด เลื่อน i ให้ -----------------------------
         if (this.isNiccahit(w[i+1])){
-          console.log('payang:',payang)
-          console.log('w[i]',i,w[i])
-          console.log('w[i+1]',i,w[i+1])
           if (payang=='') payang='อ'
           if (w[i]=='อ') this.th_read.push(payang+this.hanargasa+'ง')
           else this.th_read.push(payang+w[i][1]+'ง')
@@ -252,9 +248,7 @@ const augkarani={
           else this.th_read.push(w[i][0]+payang+w[i+1][0]) // สระ เอ โอ
           pyc=[]
           let ww=w[i+1]+w[i+2]
-          console.log('i, ww',i, ww);
           if(!this.isTwoVoiceSanyoko(ww)) i++  // เสียงเดืยว เลื่อน
-          console.log('i, ww',i, ww);
         
         }else if(this.isSara(w[i+1]) || this.isSara(w[i+2])){ // ไม่มีสังโยค
           if (payang=='') payang='อ'  // ไม่มีอักขระนำ
@@ -265,8 +259,6 @@ const augkarani={
         }
       }else{
         pyc.push(w[i])
-
-        console.log('i เก็บ w[i],pyc.length ', i, w[i], pyc.length);
       }
     }
     display_thai_read_result(this.th_read.join('-'))

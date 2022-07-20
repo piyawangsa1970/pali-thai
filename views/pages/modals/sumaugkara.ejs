@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../../partials/header.ejs",{title:"อักขระและสนธิ"})%>
+</head>
+
+<body>
+  <!-- side nav -->
+
+  <%- include ("../../partials/nav.ejs",
+    {
+      nav_title:"อักขระและสนธิ",
+      guides:[["บาลีไทย","/"],["ไวยากรณ์ › อักขระและสนธิ","#"]],
+      acc:[
+        {stus:false,caption:"หน้าแรก",href:"/"},
+        {stus:true,caption:"อักขระ",len:7,
+          sub:["อักขระ","สระ","พยัญชนะ","นิคคหิต","ต่ออักขระ","รวมพยัญชนะเข้ากับสระ","แยกพยัญชนะออกจากสระ"],
+          hrefs:["#","#","#","#","#","#","#"]
+        },
+        {stus:true,caption:"สนธิ",len:3,
+          sub:["รัสโส","ทีโฆ","โลโป"],
+          hrefs:["#","#","#"]
+        }
+      ]
+    }) 
+  %>
+    <br><br><br>
+    <div class="w3-container">
+      <div id="modal" class="w3-modal">
+        <div class="w3-modal-content">
+          <div class="w3-container">
+            <span onclick="document.getElementById('modal').style.display='none'" class="w3-display-topright w3-xlarge button">&times;</span>
+            <div id="augkara_input" class="mt-16">ปกติสนธิ:</div>
+            <div id="thai_read_result">อ่านว่า:</div>
+            <div id="thai_read_error" class="mb-16">ตรวจสอบ:</div>
+            
+            <div class="w3-center">
+              <div id="sum_payanchana_with_sara" class="mb-16" style="font-size:18px;">อกฺขฺอรฺอานฺอิ</div>
+              <div>
+                <button class="w3-button w3-round w3-green" onclick="sumaugkara1()">1</button>
+                <button class="w3-button w3-round w3-green" onclick="sumaugkara2()">2</button>
+                <button class="w3-button w3-round w3-green" onclick="sumaugkara3()">3</button>
+              </div>
+            </div>
+            <div class="mb-16">
+              1. พิจารณาเฉพาะ พยัญชนะที่เรียงติดกับสระ  <br>
+              2. ลบ จุดใบ้ อันเป็นนิมิตของพยัญชนะ และ ลบ อ อันเป็นนิมิตของสระ พร้อม ๆ กัน <br>
+              3. ผสมพยัญชนะกับสระให้ถูกต้องตามวิธีของอักขระไทย <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="row-content">
+      <h5 class="container">แบบฝึกหัด</h5>
+      <div class="container w3-border">
+        <br>
+        <div 
+          class="container">ผู้ใคร่ศึกษา พึงกำหนดอักขระให้ถูกต้องตามหลักสนธิ หลังจากนั้นให้รวมพยัญชนะเข้ากับสระ 
+        </div>
+        <div class="w3-center">
+          <!-- แบบฝึกหัด ที่ 1 ส่งคำตอบ รวมพยัญชนะเข้ากับสระ -->
+          <button 
+            class="w3-button w3-teal mb-16" 
+            onclick="openQuestion(event,1)"
+            > ทำแบบฝึกหัด
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  <%- include ("../../partials/footer.ejs")%>
+</body>
+<script>
+  var n=1
+  var myinterval = null
+  function sumaugkara1(){ 
+    console.log('sumaugkara 1');
+    myinterval = setInterval(bling, 500);
+    
+  }
+  function bling(){
+    const el = document.getElementById("sum_payanchana_with_sara")
+    let inn=[]
+    inn[0] = ["อกฺขฺอรฺอานฺอิ"]
+    inn[1] = ["อกฺข\u00A0\u2006ร\u00A0\u2006าน\u00A0\u2006\u0E34"]
+
+    n = n+1 
+    
+    if (n%2==1) el.innerHTML=inn[1]
+    else el.innerHTML=inn[0]
+    console.log('n:',n)
+    if (n>7) {
+      stopInterval();
+      n = 0
+    }
+  }
+
+  function stopInterval() {
+    clearInterval(myinterval);
+  }
+
+  function sumaugkara2(){
+    console.log('sumaugkara 2');
+    const el = document.getElementById("sum_payanchana_with_sara")
+    el.innerHTML = ["อกฺขฺร\u00A0\u2006าน\u00A0\u2006\u0E34"]
+  }
+  function sumaugkara3(){
+    const el = document.getElementById("sum_payanchana_with_sara")
+    el.innerHTML = ["อกฺขรานิ"]
+  }
+</script>
+</html>

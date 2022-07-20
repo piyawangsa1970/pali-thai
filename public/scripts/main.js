@@ -1,4 +1,17 @@
 
+// ะ \u0E30   &#3632;
+//  ั \u0E31   &#3633;
+// า \u0E32  &#3634;
+//   ิ  \u0E34  &#3636;
+//   ี  \u0E35 &#3637;
+//   ุ  \u0E38 &#3640;
+//   ู  \u0E39 &#3641;
+//  เ  \u0E40 &#3648;
+//  โ \u0E42 &#3650;
+// .  \u0E3A  &#3642;
+//   ํ  \u0E4D &#3661;
+//   figure space  \u2007 &#8199;
+
 
 // Change style of top container on scroll
 // window.onscroll = function() {myFunction()};
@@ -71,7 +84,14 @@ function include_keyboard(){
   return keyboard
 }
 
-function openQuestion(event){
+function openQuestion(event,num_of_work){
+  // doselect
+  // 0 สะกด
+  // 1 รวมพยัญชนะเข้ากับสระ
+  doselect=[
+    {cmd:"ส่งคำตอบ"},                       // 0
+    {cmd:"รวมพยัญชนะเข้ากับสระ"}              // 1
+  ]
   let parent=event.target.parentElement.parentElement
   let question = document.getElementById ("question");
   if (question!=null) question.remove()
@@ -98,56 +118,10 @@ function openQuestion(event){
     </div>
     <div class="clearfix"></div>
     <div class="w3-center">
-      <button class="w3-button w3-green" onClick="send_arr_of_augkara()"> ส่งคำตอบ </button>
+      <button class="w3-button w3-green" onClick="send_arr_of_augkara(${num_of_work})"> ${doselect[num_of_work].cmd} </button>
     </div>`
 }
 
-
-/*
-function openQuestion(event){
-  let el=event.target.parentElement.parentElement
-  let char_keys=["อ","อา","อิ","อี","อุ","อู","เอ","โอ"
-                ,"กฺ","ขฺ","คฺ","ฆฺ","งฺ"
-                ,"จฺ","ฉฺ","ชฺ","ฌฺ","ญฺ"
-                ,"ฏฺ","ฐฺ","ฑฺ","ฒฺ","ณฺ"
-                ,"ตฺ","ถฺ","ทฺ","ธฺ","นฺ"
-                ,"ปฺ","ผฺ","พฺ","ภฺ","มฺ"
-                ,"ยฺ","รฺ","ลฺ","วฺ","สฺ","หฺ","ฬฺ","อํ"]
-  let div_inn=''
-  for (let i=0; i<char_keys.length; i++){
-    div_inn += `<div onClick=(insert_augkara('${char_keys[i]}'))>${char_keys[i]}</div>`
-  }
-  el.innerHTML = `
-  <br>
-  <div class="container">ผู้ใคร่ศึกษา พึงสนธิอักขระตามที่กำหนดให้ดังต่อไปนี้ อกฺขอรฺออํ 
-  </div>
-  <div class="w3-center">
-    <button 
-      class="w3-button w3-teal mb-16" 
-      onclick="openQuestion(event)"
-      > ทำแบบฝึกหัด 
-    </button>
-  </div>
-
-  <div class="quest-santhi w3-light-grey">
-    <div>
-      <button style="width:30px" onclick="decrease_augkara_input()">&minus;</button> 
-      <span id="num_of_augkarani">1</span>
-      <button style="width:30px" onclick="increase_augkara_input()">&plus;</button>
-    </div>
-    <div id="getAugkarani">
-      <div class="input-augkara intro w3-border w3-border-green" onClick="setActive(0)">_</div>
-    </div>
-    <div class="keyboard w3-center">
-      ${div_inn}
-    </div>
-    <div class="clearfix"></div>
-    <div class="w3-center">
-      <button class="w3-button w3-green" onClick="send_arr_of_augkara()"> ส่งคำตอบ </button>
-    </div>
-  </div>`
-}
-*/
 function increase_augkara_input(){
   let num = document.getElementById("num_of_augkarani")
   let count = +num.innerHTML
@@ -187,7 +161,7 @@ function insert_augkara(ch){
   
 }
 
-function send_arr_of_augkara(){
+function send_arr_of_augkara(num){
   
   let arr_of_augkara = []
   let x = document.getElementsByClassName("input-augkara")
@@ -195,15 +169,33 @@ function send_arr_of_augkara(){
     if(x[i].textContent!='_') arr_of_augkara.push(x[i].textContent)
   }
   document.getElementById('modal').style.display='block'
-  console.log('send_arr_of_augkara()',arr_of_augkara);
+  document.getElementById('sum_augkara').style.display='none'
   augkarani.value = arr_of_augkara
-  let res = augkarani.get_th_read()
-  //display_result(augkarani.th_read)
+ 
+  let res = null
+  switch (num){
+    case 0: // ตรวจสอบการผสมอักขระ
+      res = augkarani.get_th_read()
+      break
+    case 1: // รวมพยัญชนะ เข้ากับสระ 
+      res = augkarani.get_th_read()
+      // id="sum_augkara"
+      if (document.getElementById("thai_read_result").innerHTML.includes("ออก")){
+        document.getElementById('sum_augkara').style.display='none'
+      }else{
+        document.getElementById('sum_augkara').style.display='block'
+      }
+      break;
+  }
+  // การแสดงผล ให้แต่ละ function แสดง
 }
 
 
 function display_augkara_input(result){
-  document.getElementById("augkara_input").innerHTML='อักขระสนธิ: '+result
+  document.getElementById("augkara_input").innerHTML='ปกติสนธิ: '+result
+  blingWord = result
+  document.getElementById("sum_payanchana_with_sara").innerHTML=result
+  
 }
 
 function display_thai_read_result(result){
@@ -212,4 +204,98 @@ function display_thai_read_result(result){
 
 function display_thai_read_error(result){
   document.getElementById("thai_read_error").innerHTML='ตรวจสอบ: '+ result
+}
+
+// sum augkara
+var n=1
+var myinterval = null
+var blingWord = null
+var blingWord_blank
+
+function sumaugkara1(){ 
+  n=0
+  myinterval = setInterval(bling, 500);
+  blingWord_blank = replace_text_for_bling(blingWord)
+  
+}
+
+function bling(){
+  const el = document.getElementById("sum_payanchana_with_sara")
+  n = n+1 
+  if (n%2==1) el.innerHTML=blingWord_blank
+  else el.innerHTML=blingWord 
+  if (n>5) {
+    stopInterval();
+    n = 0
+  }
+}
+
+function replace_text_for_bling(x){
+  let l = x.length
+  x += '__'
+  let y = x.split('')
+  let res =''
+  
+  for(let i=0; i< l;i++){
+    if (y[i]=='\u0E3A'){  // pintu
+      if (y[i+1]=='อ'){
+        y[i]=''
+        y[i+1]='\u00A0\u2006'
+      }else if (y[i+1]=='เ' || y[i+1]=='โ') {
+        y[i]=''
+        y[i+2]='\u00A0\u2006'
+      }
+    }else if(y[i]=='อ' && y[i+1]=="\u0E4D"){
+      y[i]='\u00A0\u2006'
+    }
+    res += y[i]
+  }
+ 
+  return res
+}
+
+function sum_decrease(x){
+  let l = x.length
+  x = '__' + x + '__'
+  let y = x.split('')
+  let res = ''
+  
+  for(let i=2; i< l+2;i++){
+    if (y[i]=='\u0E3A'){  // pintu
+      if (y[i+1]=='อ'){
+        y[i]=''
+        y[i+1]=''
+      }else if (y[i+1]=='เ' || y[i+1]=='โ') {
+        y[i]=''
+        if (y[i-2]=='\u0E3A'){  // pintu  มีพยัญชนะสังโยค
+          y[i-3]=y[i+1]+y[i-3]     
+        }else{
+          y[i-1]=y[i+1]+y[i-1]
+        }
+        y[i+1]=''
+        y[i+2]=''
+      }
+    }else if (y[i+1]=="\u0E4D"){
+      y[i]=''
+    }
+  }
+
+  for(let i=2;i<l+2;i++){
+    res += y[i] 
+  }
+ 
+  return res
+}
+
+function stopInterval() {
+  clearInterval(myinterval);
+}
+
+function sumaugkara2(){
+  const el = document.getElementById("sum_payanchana_with_sara")
+  el.innerHTML = blingWord_blank
+}
+function sumaugkara3(){
+  const el = document.getElementById("sum_payanchana_with_sara")
+  el.innerHTML = sum_decrease(blingWord)
 }
