@@ -1,0 +1,51 @@
+.keyboard{
+  margin-top:8px;
+  margin-bottom: 8px;
+  margin-left:-16px;
+  margin-right:-16px;
+}
+.keyboard >div{
+  display: inline-block;
+  width:1.7rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+  text-align: center;
+  color:white;
+  background-color: #555;
+  padding:3px 0;
+  border-radius: 6px;
+  margin-left: 1px;
+  margin-right: 0;
+  margin-bottom: 1px;
+}
+
+.keyboard {
+  div:nth-child(1){
+    background-color: #009688;
+  }
+  div:nth-child(9){
+    background-color: #009688;
+  }
+  div:nth-child(14){
+    background-color: #009688;
+  }
+  div:nth-child(19){
+    background-color: #009688;
+  }
+  div:nth-child(24){
+    background-color: #009688;
+  }
+  div:nth-child(29){
+    background-color: #009688;
+  }
+  div:nth-child(34){
+    background-color: #009688;
+  }
+  div:nth-child(41){
+    background-color: #009688;
+  }
+}
+
+.keyboard >div:hover{
+  cursor: pointer;
+}

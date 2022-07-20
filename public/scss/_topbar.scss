@@ -1,0 +1,53 @@
+
+#topbar{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  
+  
+}
+#topbar > div{
+  margin-left: 16px;
+  font-size: 18px;
+  
+  
+}
+#topbar > div:last-child{
+  margin-top: 10px;
+  float: left;
+  height: 40px;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+
+#hamburger > div{
+  display:block;
+  width:22px;
+  height: 8px;
+  border-top: 2px solid white;
+}
+#hamburger > div:first-child{
+  margin-top: 6px;
+}
+
+#hamburger:hover{
+  cursor: pointer;
+}
+
+ 
+/* Add a color on mouse-over */
+
+.breadcrumbs:not(:last-child){
+  color: rgb(252, 252, 168);
+}
+.breadcrumbs:not(:last-child):hover{
+  color: blue;
+}
+.breadcrumbs:not(:last-child)::after{
+  content: "/";
+}
+.breadcrumbs:last-child{
+  cursor:default;
+}

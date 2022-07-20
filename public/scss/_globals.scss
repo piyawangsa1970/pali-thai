@@ -1,0 +1,89 @@
+@font-face {
+  font-family: Buddhadham;
+  src: url(/fonts/Buddhadham.otf);
+}
+
+*{
+  font-family: Buddhadham, sans-serif !important
+}
+a{
+  text-decoration: none;
+}
+
+.m-8{
+  margin: 8px;
+}
+.mt-16{
+  margin-top: 16px;
+}
+.mb-16{
+  margin-bottom: 16px;
+}
+
+.px-8{
+  padding: 0 8px;
+}
+.py-8{
+  padding: 8px 0;
+}
+
+.pd-8{
+  padding: 8px;
+}
+.pl-16{
+  padding-left: 16px;
+}
+.pb-16{
+  padding-bottom: 16px;
+}
+
+.indent-16{
+  text-indent: 16px;
+}
+
+
+.button:hover,
+.hover-light-grey:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+
+.container-main{
+  padding-left:16px;
+  padding-right:8px;
+  padding-top:60px;
+}
+
+.container {
+  margin: 0 16px 16px 16px;
+}
+
+.button{
+  display:inline-block;
+  padding: 5px 8px;
+
+}
+.row-content{
+  max-width:800px;
+  margin: auto;
+}
+
+
+
+input[type="radio"]{
+  display: inline-block;
+  background-color: blueviolet;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 600px) {
+  .container-main{
+    padding-left:0px;
+    padding-right:0px;
+  }
+}

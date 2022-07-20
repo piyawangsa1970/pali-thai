@@ -1,0 +1,27 @@
+.sidebar-list{
+  display: block;
+  width:100%;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 8px 16px;
+}
+
+.acc::after {
+  float:right;
+  margin-right: 16px;
+}
+
+.acc-img-down::after, .dropdown-after::after{
+  content:" \25BC";
+}
+
+.acc-img-up::after{
+  content:" \25B2";
+}
+
+.acc-list{
+  display: block;
+  width:100%;
+  padding: 6px 32px;
+  font-weight: 600;
+}
